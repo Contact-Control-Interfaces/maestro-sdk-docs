@@ -31,7 +31,7 @@ If you are developing an application using C++ rather than Blueprint scripting, 
 It should be noted that the plugin calls `start_maestro_detection_service` on start-up, so it is unnecessary to call this function to get the glove to connect provided the plugin is enabled and starts up properly.
 
 ## Useful Blueprints
-The list below is not meant to be a complete and comprehensive list of all included content with the plugin, but instead is meant to detail the purpose and member variables of a few of the ones that are most likely to be used. The blueprints below are also meant as an example for how to use the plugin. 
+The list below is not meant to be a complete and comprehensive list of all included content with the plugin, but instead is meant to detail the purpose and member variables of a few of the ones that are most likely to be used. The blueprints below are also meant as an example for how to use the plugin.
 #### MaestroHand
 Example of animating a skeletal mesh with data from the Maestro. Blueprint handles haptic responses on overlap, as well as object pickup interactions. For this reason, all actors in the scene need to have overlap events enabled in order for the blueprint to react to them. All instance variables under the Maestro category are necessary for the blueprint to function properly, and their purposes are as follows:
 > **Which Hand** - Whether this hand is a left hand or a right hand. Blueprint uses this to decide how to draw the skeletal mesh and which glove to retrieve data from.
@@ -90,5 +90,14 @@ Sphere collider that is attached to the end of a finger or to the palm to enable
 >
 > **Parent** - Reference to the [MaestroHand](#maestrohand) actor that owns this collider. Used to decide where to parent object upon pickup and get the glove pointer for haptic responses.
 
+## Blueprint Interfaces
+The Maestro Unreal SDK includes three blueprint interfaces to pass all the glove's displacement data, displacement velocity data, and rotation data, respectively, to other blueprints. These allow you to easily use your own classes with [MaestroHand](#maestrohand) without having to modify the MaestroHand's blueprint itself. [Full Unreal Blueprint Interface documentation can be found here](https://docs.unrealengine.com/latest/INT/Engine/Blueprints/UserGuide/Types/Interface/).
+#### MaestroPassDisplacementsInterface
+Blueprint interface used to pass a `DisplacementContext` between blueprints. Used by [MaestroHand](#maestrohand) to pass displacements to its Displacements Debug Actor.
+#### MaestroPassDisplacementVelocitiesInterface
+Blueprint interface used to pass a `DisplacementVelocityContext` between blueprints. Currently unused by [MaestroHand](#maestrohand).
+#### MaestroPassRotationsInterface
+Blueprint interface used to pass a `RotationContext` between blueprints. Used by [MaestroHand](#maestrohand) to pass rotations to its skeletal mesh.
+
 ## Example VR Project
-The Maestro Unreal SDK also includes an example project based off the Unreal VR Template to show pickup and object interaction with the Maestro. [The example `MinimalUnrealVR` project can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.1a) and includes the plugin itself. The Project is set up to use the [MaestroPawn](#maestropawn) blueprint, so it's variables will have to be set properly for the glove to track.
+The Maestro Unreal SDK also includes an example project based off the Unreal VR Template to show pickup and object interaction with the Maestro. [The example `MinimalUnrealVR` project can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.1a) and includes the plugin itself. The Project is set up to use the [MaestroPawn](#maestropawn) blueprint, so its variables will have to be set properly for the glove to track.
