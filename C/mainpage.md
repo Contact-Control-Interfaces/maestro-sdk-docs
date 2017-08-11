@@ -1,6 +1,8 @@
 
 <img src="../images/social-cover.png">
 
+Libraries and header files can be downloaded [here](https://github.com/Contact-Control-Interfaces/maestro-sdk/releases/tag/v0.1a)
+
 ## Introduction
 The Maestro C API allows developers to build tools and applications that utilize the Maestro glove's motion capture and haptic functionality.
 
