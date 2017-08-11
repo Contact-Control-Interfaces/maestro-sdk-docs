@@ -7,6 +7,7 @@ Libraries and header files can be downloaded [here](https://github.com/Contact-C
 The Maestro C API allows developers to build tools and applications that utilize the Maestro glove's motion capture and haptic functionality.
 
 ## Terminology
+
 <img src="../images/hand-joint-diagram.png">
 
 The documentation and SDK refer to different joints in the hand and finger using the terminology depicted above. The first joint on the thumb (where the thumb connects to the palm) has both a proximal rotation that controls inward rotation, much like the finger proximal joints, as well as an abduction rotation that controls the side-to-side rotation of the thumb. These two rotations paired together allow for the circular rotation of the thumb.
