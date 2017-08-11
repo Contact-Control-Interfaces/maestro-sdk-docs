@@ -8,7 +8,7 @@ Configuration installer found [here](https://github.com/Contact-Control-Interfac
 
 [Unity](https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/)
 
-Unreal
+[Unreal](https://contact-control-interfaces.github.io/maestro-sdk-docs/Unreal/)
 
 ## Setup
 ### Physical setup for use before wearing Maestro Alpha
