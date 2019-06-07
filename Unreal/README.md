@@ -2,7 +2,15 @@
 
 ## This guide is for Maestro devices using external tracking systems. See [this guide](./Alpha_README.md) for the Alpha models
 
-In order to use the Maestro Glove in Unreal Engine 4, the Maestro Glove Unreal plugin must be used. [The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.1a). [Full Unreal plugin documentation can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
+In order to use the Maestro Glove in Unreal Engine 4, the Maestro Glove Unreal plugin must be used. 
+
+[The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.2). 
+
+Additionally, this plugin is set up to support the official LeapMotion plugin as the current Maestro version has no internal tracking system. Note that the plugin is built to support any tracking system, and merely hooks onto a driven hand skeleton, and as such other hand tracking systems may be used.
+
+This plugin was compiled for version 4.20.3, so [the recommended LeapMotion plugin version is here.](https://github.com/leapmotion/LeapUnreal/releases/tag/v3.0.1)
+
+[Full Unreal plugin documentation can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
 
 ## Plugin Set-up
 Before the plugin can be installed, verify that the following prerequisites are met:
@@ -32,41 +40,61 @@ If you are developing an application using C++ rather than Blueprint scripting, 
 
 It should be noted that the plugin calls `start_maestro_detection_service` on start-up, so it is unnecessary to call this function to get the glove to connect provided the plugin is enabled and starts up properly.
 
+## Example Map
+A sample map is provided in the `Examples` directory of the plugin, and features a variety of different custom interactions to illustrate how to use the Maestro Unreal SDK.
+
 ## Useful Blueprints
 The list below is not meant to be a complete and comprehensive list of all included content with the plugin, but instead is meant to detail the purpose and member variables of a few of the ones that are most likely to be used. The blueprints below are also meant as an example for how to use the plugin.
+
+#### MaestroInteractable
+Actor component used by anything that should have Maestro haptics. May be extended for more complex haptic effects.
+> **Use Default Values** - Should I ignore all these values and just use the [MaestroComponent](#maestrocomponent) defaults?
+>
+> **Pull Amplitude** - Pull amplitude used on overlap by default
+>
+> **Vibration Effect** - Vibration effect used on overlap by default
+>
+> **Pull Curve** - Curve defining amplitudes to play on overlap. Overrides Pull Amplitude.
+>
+> **Vibration Curve** - Curve defining vibration effects to play on overlap. Overrides Vibration Effect.
+>
+> **Loop Pull Curve** - Should the pull amplitude curve be played continuously?
+>
+> **Loop Vibration Curve** - Should the vibration effect curve be played continuously?
+
+This blueprint contains two functions that may be overridden to provide more complex effects. See `Blueprints\Examples` for examples.
+> **Get Pull Amplitude** - Called by a [FingertipCollider](#fingertipcollider) to decide what pull amplitude to play.
+>
+> **Get Vibration Effect** - Called by a [FingertipCollider](#fingertipcollider) to decide what vibration effect to play.
+
+#### MaestroLeapPawn
+Leap VR pawn set up to use Maestro components for each hand. An example of how to use the Maestro with a driven skeletal mesh.
+> **Left Component** - [MaestroComponent](#maestrocomponent) spawned on the left Leap hand.
+>
+> **Right Component** - [MaestroComponent](#maestrocomponent) spawned on the right Leap hand.
+
 #### MaestroComponent
 The Blueprint enables haptic responses on overlap with a skeletal mesh's fingertips/palm. For this reason, all actors in the scene need to have overlap events enabled in order for the blueprint to react to them. All instance variables under the Maestro category are necessary for the blueprint to function properly, and their purposes are as follows:
 > **Which Hand** - Whether this hand is a left hand or a right hand. Blueprint uses this to decide which glove to retrieve data from.
 > 
-> **Vibration Effect** - Byte representing the strength of the vibration played in the fingertips during an overlap, `0` being no vibration and `128` being full vibration.
-> 
-> **Pull Amplitude** - Byte representing the amplitude of the force feedback motors during an overlap, `0` being no pull and `255` being full pull. It is recommended to always set this to somewhere in the approximate range `40`-`200`. Values above about `200` are clamped down to `200`. This maximum value may change at our discretion.
+> **Haptic Mode** - Haptic mode for object interaction. Use OnAll to activate haptics on all overlaps, use OnInteractables to activate haptics only on Maestro Interactables.
 >
-> **Socket Names** - TODO
+> **Vibration Effect** - Byte representing the default strength of the vibration played in the fingertips during an overlap, `0` being no vibration and `128` being full vibration.
+> 
+> **Pull Amplitude** - Byte representing the default amplitude of the force feedback motors during an overlap, `0` being no pull and `255` being full pull. It is recommended to always set this to somewhere in the approximate range `40`-`200`. Values above about `200` are clamped down to `200`. This maximum value may change at our discretion.
+>
+> **Socket Names** - Ordered list of socket names on the target skeleton (Thumb, Index, ..., Palm). Used to spawn and attach fingertip colliders.
 >
 > **Finger Size** - Diameter of colliders used on the fingertips.
 >
 > **Palm Size** - Size of the collider used on the palm.
+>
+> **Show Colliders** - Whether or not to show the colliders used for haptics. Change color on overlap.
 
-Additionally, it is generally useful to be able to calibrate based on keypresses, so three key variables are exposed in the Calibration category for this purpose. All three are "None" by default as to not interfere with any other key-based game logic.
-> **Wrist Calibration Key** - Key that calibrates the wrist for this hand while held.
-> 
-> **Proximal Calibration Key** - Key that calibrates the proximal joints (fingers) for this hand while held.
+#### FingertipCollider
+Sphere collider that is attached to the end of a finger or to the palm to enable haptics/pickup. Spawned automatically by [MaestroComponent](#maestrocomponent).
+> **Index** - Integer index defining which finger this collider is attached to. `0` is the thumb, `1`-`4` are the fingers, `5` is the palm. Assigned automatically by [MaestroComponent](#maestrocomponent).
 >
-> **Thumb Calibration Key** - Key that calibrates the thumb for this hand while held.
+> **Parent** - Reference to the [MaestroComponent](#maestrocomponent) actor that owns this collider. Used to decide where to get the glove pointer for haptic responses.
 >
-> **Show Pickup Colliders** - Boolean that says whether or not to draw the colliders on the fingertips/palm used for haptics and pickup. Colliders will appear as a blue bubble, and will turn red whenever they overlap with a valid object.
-
-#### MaestroPickup
-Actor component that can be attached to any overlap-enabled actor to allow the [MaestroHand](#maestrohand) to pick it up.
-> **Lift Constant** - Rotation ratio above which a finger cannot grab an object.
->
-> **Release Constant** - Rotation ratio above which defines a release between a finger and the palm.
->
-> **Pinch Threshold** - How much your finger has to uncurl from the position it grabbed the object to define a release, specifically when the grab is between the thumb and a finger. 
-
-#### FingerTipCollider
-Sphere collider that is attached to the end of a finger or to the palm to enable haptics/pickup. Spawned automatically by [MaestroHand](#maestrohand).
-> **Index** - Integer index defining which finger this collider is attached to. `0` is the thumb, `1`-`4` are the fingers, `5` is the palm. Assigned automatically by [MaestroHand](#maestrohand).
->
-> **Parent** - Reference to the [MaestroHand](#maestrohand) actor that owns this collider. Used to decide where to parent object upon pickup and get the glove pointer for haptic responses.
+> **Velocity** - The velocity of this fingertip this frame.
