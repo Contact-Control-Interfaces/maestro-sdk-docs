@@ -1,5 +1,7 @@
 # Maestro Unreal SDK Guide
 
+## This guide is for Maestro devices using internal tracking. See [this guide](./README.md) for newer, non-Alpha models
+
 In order to use the Maestro Glove in Unreal Engine 4, the Maestro Glove Unreal plugin must be used. [The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.1a). [Full Unreal plugin documentation can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
 
 ## Plugin Set-up
