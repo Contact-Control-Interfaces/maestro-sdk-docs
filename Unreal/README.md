@@ -4,7 +4,7 @@
 
 In order to use the Maestro Glove in Unreal Engine 4, the Maestro Glove Unreal plugin must be used. 
 
-[The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.2). 
+[The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.2.1). 
 
 Additionally, this plugin is set up to support the official LeapMotion plugin as the current Maestro version has no internal tracking system. Note that the plugin is built to support any tracking system, and merely hooks onto a driven hand skeleton, and as such other hand tracking systems may be used.
 
