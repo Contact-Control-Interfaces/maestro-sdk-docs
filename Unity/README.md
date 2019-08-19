@@ -39,7 +39,7 @@ A low-visibility scene where the user must escape a room with doors at both ends
 
 There are two major portions of the Maestro's haptics: 
 - Pull Amplitude - Can be from `0` to `255`, with `0` being no pull and `255` being full force feedback.
-- Vibration Effect - Can be from `0` to `128`, referencing a haptic effect in [this table] (https://contact-control-interfaces.github.io/maestro-sdk-docs/C/html/group__vibration_control.html). Undefined effects produce no effect.
+- Vibration Effect - Can be from `0` to `128`, referencing a haptic effect in [this table](https://contact-control-interfaces.github.io/maestro-sdk-docs/C/html/group__vibration_control.html). Undefined effects produce no effect.
 
 Maestro device connectivity is controlled by either a `RightMaestroGloveBehaviour` or `LeftMaestroGloveBehaviour`. These scripts have a boolean that shows whether the system detects a connected device for the corresponding hand.
 
