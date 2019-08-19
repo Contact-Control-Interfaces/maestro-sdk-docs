@@ -1,5 +1,7 @@
 # Maestro Unity SDK Guide
 
+## This guide is for Maestro devices using internal tracking. See [this guide](./README.md) for newer, non-Alpha models
+
 The Unity SDK can be downloaded [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v0.1a).
 
 The SDK contains:
