@@ -2,7 +2,7 @@
 
 ## This guide is for Maestro devices using external tracking systems. See [this guide](./Alpha_README.md) for the Alpha models
 
-The Unity SDK [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.1).
+The Unity SDK [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.2).
 
 The SDK contains scripts for controlling the Maestro device, as well as three example scenes demonstrating some interactions.
 
