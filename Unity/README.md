@@ -12,7 +12,7 @@ This version is built to be tracking agnostic, but for the sake of simplicity th
 
 First you will need to run the [Maestro Alpha installer](https://github.com/Contact-Control-Interfaces/maestro-installer), which will handle creating configuration files needed for the Maestro to work. This is described under "Initial Setup" and "Configuration" [here](https://contact-control-interfaces.github.io/maestro-sdk-docs/C/html/index.html)
 
-Once you have configuration files installed and the Unity Maestro SDK Unity Package imported into a Unity project, an example rig prefab "[MaestroIndexRig]" will be available under `Assets/Maestro/Prefabs`. This is an example configuration set up to allow Maestro haptics while using the Valve Index's motion and finger tracking.
+Once you have configuration files installed and the Unity Maestro SDK Unity Package imported into a Unity project, an example rig prefab "[MaestroIndexRig]" will be available under `Assets/Maestro/Prefabs`. This is an example configuration set up to allow Maestro haptics while using the Valve Index's motion and finger tracking. 
 
 The Maestro SDK encourages but does not require two layers definitions used for interactions, which by default are named "GrippedObject" and "IgnoreWhileGripped". These names can be changed per `MaestroHand` under Advanced Configuration.
 
