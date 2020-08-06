@@ -13,6 +13,7 @@ Recommended Materials:
 Setup:
 1. Take USB splitter and stick one side of velcro it in and the other side of the velcro to a desired location on the plastic headset headband (pictured is a Windows MR Headset but similar setup is possible with Valve Index).
     * We typically prefer placing it offset from the center-back so that it does not interfere with the tightening knob of the headset. See below for example image.
+    
     <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/images/mr_splitter.jpg" height="250"/>
 2. Remove USB Extension Cable and attach to USB splitter
     * For convenience, if you wrap the cord around the power cords of the headset, it can make general transport and setup easier. See below for example images.
