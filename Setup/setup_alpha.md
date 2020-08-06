@@ -1,19 +1,19 @@
-## Hardware Setup
-### Physical setup for use before wearing Maestro Alpha
+## Maestro Alpha Hardware Setup
+### Initial setup
 
 - Plug USB extension adapter into HTC Vive USB 3.0 port located next to the ports for the standard Vive cords.
   - To access the above USB 3.0 port, slide the plate where the cords enter the headset forward.
-- Plug male USB connector side of the male USB/ Male USB micro cord into the USB extension adapter.
+- Plug male USB connector side of the male USB / Male micro-USB cord into the USB extension adapter.
 - Make sure the HTC Tracker is attached in place on top of the forearm unit.
   - Proper placement should have the charging port for the Tracker facing backwards toward your elbow. 
 
 ### Putting on Maestro Alpha
 
-1. Plug Male USB micro connector into the back of Maestro’s forearm housing.
+1. Plug Male micro-USB connector into the back of Maestro’s forearm housing.
 2. Attach battery supply holster to your waist, with the power cord attached to the batteries in the holster.
 3. Slide hand through forearm straps, without putting the glove on your hand yet. Make sure the forearm housing is sitting flat on the top side of your forearm. 
 4. Plug the power cord into the back of Maestro.
-5. Put on the glove by opening from the palm side leather and sliding your closed fist inside, then give each finger cap a very slight tug to allow enough flexibility while fitting each finger into the appropriate finger sleeve until your fingertips are snugly inside their respective finger cap. 
+5. Put on the glove by opening from the palm side leather and sliding your hand inside, then give each finger cap a very slight tug to allow enough flexibility while fitting each finger into the appropriate finger sleeve until your fingertips are snugly inside their respective finger cap. 
 6. Tighten the 1 front strap followed by the 2 back straps on the forearm housing until the unit is comfortably firm and snug against your arm. 
 
 ### Taking off Maestro Alpha 
@@ -39,4 +39,4 @@
   - Circling in both clockwise and counterclockwise directions 2 or 3 times helps capture the most accurate calibration for thumb.
   - Keeping wrist still is crucial for gathering accurate calibration data.
   
- ## Please contact us at support@contactci.co with any questions.
+## Please contact us at <support@contactci.co> with any questions.
