@@ -19,4 +19,4 @@ Configuration installer [can be found here.](https://github.com/Contact-Control-
 
 [Setup for Maestro Alpha](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_alpha)
   
-## Please contact us at support@contactci.co with any questions.
+## Please contact us at <support@contactci.co> with any questions.
