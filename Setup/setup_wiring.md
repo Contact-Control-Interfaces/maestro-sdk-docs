@@ -10,7 +10,7 @@ Recommended Materials:
 * [USB extension cable](https://www.amazon.com/AmazonBasics-Extension-Cable-Male-Female/dp/B00NH12O5I/ref=sr_1_4?keywords=usb+3.0+extension+cable&qid=1565719800&s=gateway&sr=8-4)
 
 Setup:
-1. Take USB splitter and stick one side of velcro it in and the other side of the velcro to a desired location on the plastic headset headband (pictured is a Windows MR Headset but similar setup is possible with Valve Index).
+1. Take USB splitter and stick one side of Velcro it in and the other side of the Velcro to a desired location on the plastic headset headband (pictured is a Windows MR Headset but similar setup is possible with Valve Index).
     * We typically prefer placing it offset from the center-back so that it does not interfere with the tightening knob of the headset. See below for example image.
     
     <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/images/mr_splitter.jpg" height="250"/>
@@ -34,7 +34,7 @@ Setup:
 2. Plug USB Splitter into the free end of the USB C to USB Adapter. Zip ties can be used to clean up and secure connection.
 
     <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/images/vive_pro_adapter.png" height="200"/>
-3. Take USB splitter and stick one side of velcro it in and the other side of the velcro to a desired location on the plastic headset headband. 	
+3. Take USB splitter and stick one side of Velcro it in and the other side of the Velcro to a desired location on the plastic headset headband. 	
     * We typically prefer placing it offset from the center-back so that it does not interfere with the tightening knob of the headset. See below for example image. 
 
     <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/images/mr_splitter.jpg" height="250"/>
@@ -52,7 +52,7 @@ Setup (Option 1):
     <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/images/vive_splitter.JPG" height="250"/>
     
     * If you prefer, you could attach via Velcro to the fabric strap, but that may make putting the headset on more difficult.
-    * If you are using the HTC VIVE with the Deluxe Audio Strap, attaching via velcro to a plastic region near the back of the head should be suitable.
+    * If you are using the HTC VIVE with the Deluxe Audio Strap, attaching via Velcro to a plastic region near the back of the head should be suitable.
 2. Remove USB 3.0 Extension Cable and attach to 4-Port USB 3.0 splitter
     * For convenience, if you wrap the cord around the power cords of the headset, it can make general transport and setup easier. See below for example images.
     * Doubling each cord back at the attachment point like in the left image can aid in preventing the cords from accidentally being pulled apart.
