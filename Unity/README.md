@@ -105,4 +105,14 @@ Abstract class that extends the functionality of `MaestroInteractable`. Automati
 ### `FingerTipCollider`
 Must be placed on each fingertip and in the center of the palm. Spawned and set up automatically by `MaestroHand`.
 
+## Troubleshooting
+
+#### Running my scene causes Unity to terminate!
+
+It should be noted that the DLLs used by our SDK are 64-bit only. As such, if the Unity platform settings are set to `Any CPU` or `x86` execution will halt.
+
+To address this, you may find all DLLs under `Maestro/Core/_DLLs`. Set each DLL's CPU setting to `x86_64`. If you are performing builds, this will also have to be done so the DLLs are included with 64-bit builds, and excluded for 32-bit builds.
+
+You may also have to enable `Load on startup` under `Plugin load settings`. The Unity editor will have to be restarted for this to take effect.
+
 <strong>Please contact us at support@contactci.co with any questions.</strong>
