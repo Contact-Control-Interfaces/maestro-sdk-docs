@@ -10,7 +10,7 @@ Additionally, this plugin is set up to support the official LeapMotion plugin as
 
 This plugin was compiled for version 4.20.3, so [the recommended LeapMotion plugin version is here.](https://github.com/leapmotion/LeapUnreal/releases/tag/v3.0.1)
 
-[Full Unreal plugin documentation can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
+[The full documentation for Unreal plugins can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
 
 ## Plugin Set-up
 Before the plugin can be installed, verify that the following prerequisites are met:
@@ -98,3 +98,7 @@ Sphere collider that is attached to the end of a finger or to the palm to enable
 > **Parent** - Reference to the [MaestroComponent](#maestrocomponent) actor that owns this collider. Used to decide where to get the glove pointer for haptic responses.
 >
 > **Velocity** - The velocity of this fingertip this frame.
+
+## Troubleshooting
+#### My editor crashes when opening my project!
+If you are using the plugin with Bluetooth Low Energy enabled, **make sure your computer has Bluetooth enabled**. Otherwise, the Unreal Editor will crash upon calling `start_maestro_detection_service` at around 70%, when it attempts to make use of BLE.
