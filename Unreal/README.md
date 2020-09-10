@@ -4,11 +4,11 @@
 
 In order to use the Maestro Glove in Unreal Engine 4, the Maestro Glove Unreal plugin must be used. 
 
-[The plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.2.2). 
+[The current plugin can be downloaded from here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unreal/releases/tag/v0.2.3). 
 
 Additionally, this plugin is set up to support the official LeapMotion plugin as the current Maestro version has no internal tracking system. Note that the plugin is built to support any tracking system, and merely hooks onto a driven hand skeleton, and as such other hand tracking systems may be used.
 
-This plugin was compiled for version 4.20.3, so [the recommended LeapMotion plugin version is here.](https://github.com/leapmotion/LeapUnreal/releases/tag/v3.0.1)
+The LeapMotion plugin included in Unreal Engine 4.23 was used, but if desired [a more updated LeapMotion plugin version is here.](https://github.com/leapmotion/LeapUnreal/releases/tag/v3.5.0)
 
 [The full documentation for Unreal plugins can be found here](https://docs.unrealengine.com/latest/INT/Programming/Plugins/).
 
@@ -27,6 +27,10 @@ Before the plugin can be installed, verify that the following prerequisites are 
 
 + **Plugin contains Maestro Glove library files.**
 > The Binaries folder should contain `libMaestro.dll` and `libMaestro.dll.a`, both of which are necessary at runtime for the plugin. Renaming these files or removing them will cause the plugin to fail to start.
+>
+> For Bluetooth functionality to be enabled, the Binaries folder should also include `libwinpthread-1.dll`, `WinRTDLL.dll` and `WinRTDLL.lib`. Be sure to enable Bluetooth on your system as well.
+>
+> Renaming or removing any of these files may cause the plugin to fail to start.
 
 ## Plugin Installation
 To install the plugin for a given project, place the Maestro Glove plugin in the `Plugins` folder in your project’s main directory. If that folder does not exist, create it first. The next time the project’s editor is opened the plugin will be loaded and ready to use. This can be verified by opening the Plugins Browser in editor by clicking on Plugins under the Edit dropdown on the main toolbar. If the plugin was loaded properly, it should be listed under Installed. Verify that the enabled checkbox has been clicked for the project here before continuing.
@@ -68,7 +72,7 @@ This blueprint contains two functions that may be overridden to provide more com
 > **Get Vibration Effect** - Called by a [FingertipCollider](#fingertipcollider) to decide what vibration effect to play.
 
 #### MaestroLeapPawn
-Leap VR pawn set up to use Maestro components for each hand. An example of how to use the Maestro with a driven skeletal mesh.
+Leap VR pawn set up to use Maestro components for each hand. An example of how to use the Maestro with a driven skeletal mesh. Also spawns a widget to show BLE connectivity.
 > **Left Component** - [MaestroComponent](#maestrocomponent) spawned on the left Leap hand.
 >
 > **Right Component** - [MaestroComponent](#maestrocomponent) spawned on the right Leap hand.
