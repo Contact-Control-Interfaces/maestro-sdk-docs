@@ -27,6 +27,8 @@ It is also possible to roll your own configuration using the SDK components avai
 
 ## Setup
 
+Before installing the Unity SDK package, you'll need to add a scoped registery entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
+
 You can grab a tarball of our latest Unity SDK Package here [TODO]. You can add this package using the Package Manager:
 https://github.com/Contact-Control-Interfaces/maestro-sdk-docs/blob/master/Unity/2.6.0/images/hierarchy_rigs.png
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/package_manager_tarball.png" height="250"/>
