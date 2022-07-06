@@ -11,14 +11,14 @@ This release includes:
  - The ability to customize force feedback and vibrotactile haptics per object in scene
  - An example scene showcasing interactions and haptics named "Sandbox"
 
-This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Oculus hand tracking. If you want compatibility with some other tracking configuration, you can try to roll your own rig by following these steps [TODO].
+This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta hand tracking. If you want compatibility with some other tracking configuration, you can try to roll your own rig by following these steps [TODO].
 
 ## Compatibility
 
 The Unity SDK provides the following prefab rigs for ease of integration:
  - [MaestroUltraleapRig] - Provides support for:
    - Leap Motion Controller
-   - Sterio IR 170
+   - Stereo IR 170
    - Ultraleap 3Di
  - [MaestroOculusRig]
    - Meta Quest 2
@@ -27,11 +27,13 @@ It is also possible to roll your own configuration using the SDK components avai
 
 ## Setup
 
-Before installing the Unity SDK package, you'll need to add a scoped registery entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
+Before installing the Unity SDK package, you'll need to add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
 
 You can grab a tarball of our latest Unity SDK Package here [TODO]. You can add this package using the Package Manager:
-https://github.com/Contact-Control-Interfaces/maestro-sdk-docs/blob/master/Unity/2.6.0/images/hierarchy_rigs.png
+
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/package_manager_tarball.png" height="250"/>
+
+&nbsp;
 
 ## Included Sample
 
@@ -45,6 +47,8 @@ In order to run the scene, first ensure that you have enabled the rig that corre
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/hierarchy_rigs.png" height="250"/>
 
+&nbsp;
+
 ## Integrating Maestro / Usage
 
 The easiest way to add Maestro compatibility to a Unity scene is by utilizing the provided prefabs: [MaestroUltraleapRig] and [MaestroOculusRig]. These can be found under `Contact CI Unity SDK/Runtime/Core/Prefabs/` in the `Packages` folder after installing from a tarball. Simply drag the appropriate prefab into the hierarchy.
@@ -53,7 +57,7 @@ The easiest way to add Maestro compatibility to a Unity scene is by utilizing th
 
 By default, any object that is collidable within the scene will provides haptics when touched. The default haptics can be configured via `MaestroManager`. `MaestroManager` can be found on the root of the provided prefabs.
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/maestro_manager.PNG" height="250"/>
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/maestro_manager.PNG" height="250"/>&nbsp;
 
 Under `Default Interaction Profile`, you can configure the default haptics and configuration for the scene:
  - `Grab Type` - Currently only `Arcade` is available; more to come soon!
@@ -81,6 +85,8 @@ This script also defines a few events that may be used to easily create complex 
   - `On Touch` (FingerTipCollider) - Called when a finger touches the object
   - `Un Touch` (FingerTipCollider) - Called when a finger stops touching the object
   - `While Touch` (FingerTipCollider) - Called while a finger touches the object
+
+&nbsp;
 
 ## Troubleshooting
 
