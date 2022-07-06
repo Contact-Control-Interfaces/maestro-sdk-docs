@@ -68,12 +68,12 @@ Under `Default Interaction Profile`, you can configure the default haptics and c
 
 ### MaestroInteractable
 
-To customize the haptics for a given collidable gameobject, utilize the `MaestroInteractable` script. The fields available will look very similar to those found on `MaestroManager` (documented [here](#default-haptics)).
+To customize the haptics for a given collidable gameobject, utilize the `MaestroInteractable` script. The fields available will look very similar to those found on `MaestroManager` ([documented here](#default-haptics)).
 
  <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/interactable_haptics.png" height="250"/>
 
 You can also control how an object can be manipulated using the `Type` field under Configuration:
-  - `Static` (unable to be picked up)
+  - `Static` - Unable to be picked up
   - `One hand grab` - Can be picked up using either individual hand
   - `Two hand` - Requires both hands to pick up
 
@@ -97,5 +97,17 @@ It should be noted that the DLLs used by our SDK are 64-bit only. As such, if th
 To address this, you may find all DLLs under `Contact CI Unity SDK/Runtime/Core/_DLLs`. Set each DLL's CPU setting to `x86_64`. If you are performing builds, this will also have to be done so the DLLs are included with 64-bit builds, and excluded for 32-bit builds.
 
 You may also have to enable `Load on startup` under `Plugin load settings`. The Unity editor will have to be restarted for this to take effect.
+
+#### My `.apk` doesn't have hand tracking! Starting the app gives a “Switch to Controllers” prompt.
+
+Make sure your Oculus project settings don’t have **Hand Tracking Support** set to `Controllers Only`. Setting it to `Hands Only` is recommended. These settings can be found on the main `OVRManager` component in the scene or under `Assets/Oculus/OculusProjectConfig.asset`.
+
+#### An error occurred while resolving packages: . . . com.contactci.unity has invalid dependencies or related test packages: com.ultraleap.tracking (dependency): Package [com.ultraleap.tracking@5.11.0] cannot be found
+
+You need to add the scoped registry for Ultraleap hand tracking support, [see Setup above](#setup).
+
+#### error CS0246: The type or namespace name 'OVRManager' could not be found (are you missing a using directive or an assembly reference?)
+
+You need to import [the Oculus Integration](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) for full Quest hand tracking support.
 
 <strong>Please contact us at support@contact.ci with any questions.</strong>
