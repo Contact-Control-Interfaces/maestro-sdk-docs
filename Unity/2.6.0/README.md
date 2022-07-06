@@ -7,7 +7,7 @@ Unity SDK 2.6.0 [can be downloaded here](https://github.com/Contact-Control-Inte
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
 
 This release includes:
- - Prefabs for Ultraleap and Meta Quest 2 hand-tracking compatibility
+ - Prefabs for Ultraleap and Meta Quest hand-tracking compatibility
  - The ability to customize force feedback and vibrotactile haptics per object in scene
  - An example scene showcasing interactions and haptics named "Sandbox"
 
@@ -21,7 +21,7 @@ The Unity SDK provides the following prefab rigs for ease of integration:
    - Stereo IR 170
    - Ultraleap 3Di
  - [MaestroOculusRig]
-   - Meta Quest 2
+   - Meta Quest
 
 It is also possible to roll your own configuration using the SDK components available.
 
@@ -43,7 +43,7 @@ Once you've installed the package, you can navigate to the "Samples" section wit
 
 The sandbox scene has a variety of interactions including picking up objects, pushing buttons, and finger painting.
 
-In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 2 haand tracking support.
+In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest hand tracking support.
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/hierarchy_rigs.png" height="250"/>
 
@@ -98,9 +98,11 @@ To address this, you may find all DLLs under `Contact CI Unity SDK/Runtime/Core/
 
 You may also have to enable `Load on startup` under `Plugin load settings`. The Unity editor will have to be restarted for this to take effect.
 
-#### My `.apk` doesn't have hand tracking! Starting the app gives a “Switch to Controllers” prompt.
+#### My Quest `.apk` doesn't have hand tracking! Starting the app gives a “Switch to Controllers” prompt.
 
-Make sure your Oculus project settings don’t have **Hand Tracking Support** set to `Controllers Only`. Setting it to `Hands Only` is recommended. These settings can be found on the main `OVRManager` component in the scene or under `Assets/Oculus/OculusProjectConfig.asset`.
+In the headset itself, be sure you have hand tracking enabled in your settings, under **Hands and Controllers**.
+
+In Unity, make sure your Oculus project settings don’t have **Hand Tracking Support** set to `Controllers Only`. Setting it to `Hands Only` is recommended. These settings can be found on the main `OVRManager` component in the scene or under `Assets/Oculus/OculusProjectConfig.asset`.
 
 #### An error occurred while resolving packages: . . . com.contactci.unity has invalid dependencies or related test packages: com.ultraleap.tracking (dependency): Package [com.ultraleap.tracking@5.11.0] cannot be found
 
