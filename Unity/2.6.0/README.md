@@ -7,11 +7,11 @@ Unity SDK 2.6.0 [can be downloaded here](https://github.com/Contact-Control-Inte
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
 
 This release includes:
- - Prefabs for Ultraleap and Meta Quest hand-tracking compatibility
+ - Prefabs for Ultraleap and Meta Quest 1/2 hand-tracking compatibility
  - The ability to customize force feedback and vibrotactile haptics per object in scene
  - An example scene showcasing interactions and haptics named "Sandbox"
 
-This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta hand tracking. If you want compatibility with some other tracking configuration, you can try to roll your own rig by following these steps [TODO].
+This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta Quest 1/2 hand tracking. If you want compatibility with some other tracking configuration, you can try to roll your own rig by following these steps [TODO].
 
 ## Compatibility
 
@@ -21,7 +21,7 @@ The Unity SDK provides the following prefab rigs for ease of integration:
    - Stereo IR 170
    - Ultraleap 3Di
  - [MaestroOculusRig]
-   - Meta Quest
+   - Meta Quest 1/2
 
 It is also possible to roll your own configuration using the SDK components available.
 
@@ -43,7 +43,7 @@ Once you've installed the package, you can navigate to the "Samples" section wit
 
 The sandbox scene has a variety of interactions including picking up objects, pushing buttons, and finger painting.
 
-In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest hand tracking support.
+In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 1/2 hand tracking support.
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/hierarchy_rigs.png" height="250"/>
 
@@ -82,9 +82,9 @@ This script also defines a few events that may be used to easily create complex 
   - `On Grab` - Called when after the object is grabbed
   - `On Release` - Called when after the object is released
 - Finger events
-  - `On Touch` (FingerTipCollider) - Called when a finger touches the object
-  - `Un Touch` (FingerTipCollider) - Called when a finger stops touching the object
-  - `While Touch` (FingerTipCollider) - Called while a finger touches the object
+  - `On Touch` (FingerCollider) - Called when a finger touches the object
+  - `Un Touch` (FingerCollider) - Called when a finger stops touching the object
+  - `While Touch` (FingerCollider) - Called while a finger touches the object
 
 &nbsp;
 
