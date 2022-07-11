@@ -98,11 +98,11 @@ To address this, you may find all DLLs under `Contact CI Unity SDK/Runtime/Core/
 
 You may also have to enable `Load on startup` under `Plugin load settings`. The Unity editor will have to be restarted for this to take effect.
 
-#### My Quest `.apk` doesn't have hand tracking! Starting the app gives a “Switch to Controllers” prompt.
+#### My Quest `.apk` doesn't have hand tracking! Starting the app gives a "Switch to Controllers" prompt.
 
 In the headset itself, be sure you have hand tracking enabled in your settings, under **Hands and Controllers**.
 
-In Unity, make sure your Oculus project settings don’t have **Hand Tracking Support** set to `Controllers Only`. Setting it to `Hands Only` is recommended. These settings can be found on the main `OVRManager` component in the scene or under `Assets/Oculus/OculusProjectConfig.asset`.
+In Unity, make sure your Oculus project settings don't have **Hand Tracking Support** set to `Controllers Only`. Setting it to `Hands Only` is recommended. These settings can be found on the main `OVRManager` component in the scene or under `Assets/Oculus/OculusProjectConfig.asset`.
 
 #### An error occurred while resolving packages: . . . com.contactci.unity has invalid dependencies or related test packages: com.ultraleap.tracking (dependency): Package [com.ultraleap.tracking@5.11.0] cannot be found
 
