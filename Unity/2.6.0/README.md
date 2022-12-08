@@ -11,7 +11,7 @@ This release includes:
  - The ability to customize force feedback and vibrotactile haptics per object in scene
  - An example scene showcasing interactions and haptics named "Sandbox"
 
-This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta Quest 1/2 hand tracking. If you want compatibility with some other tracking configuration, you can try to roll your own rig by following these steps [TODO].
+This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta Quest 1/2 hand tracking.
 
 ## Compatibility
 
