@@ -1,8 +1,8 @@
-# Maestro Unity SDK 2.6.0 Guide
+# Maestro Unity SDK 2.7.0 Guide
 
 ## See [this guide](../README.md) for previous versions
 
-Unity SDK 2.6.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.6.0).
+Unity SDK 2.7.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0).
 
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
 
@@ -27,11 +27,13 @@ It is also possible to roll your own configuration using the SDK components avai
 
 ## Setup
 
-Before installing the Unity SDK package, you'll need to add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
+Before installing the Unity SDK package, you'll need to:
+ - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
+ - Intall the Oculus Integration package from the Asset Store
 
 You can grab a tarball of our latest Unity SDK Package here [TODO]. You can add this package using the Package Manager:
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/package_manager_tarball.png" height="250"/>
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/>
 
 &nbsp;
 
@@ -39,13 +41,13 @@ You can grab a tarball of our latest Unity SDK Package here [TODO]. You can add 
 
 Once you've installed the package, you can navigate to the "Samples" section within the Package Manager listing to import the Sandbox sample scene:
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/package_manager_samples.png" height="250"/>
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_samples.png" height="250"/>
 
 The sandbox scene has a variety of interactions including picking up objects, pushing buttons, and finger painting.
 
 In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 1/2 hand tracking support.
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/hierarchy_rigs.png" height="250"/>
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/hierarchy_rigs.png" height="250"/>
 
 &nbsp;
 
@@ -57,7 +59,7 @@ The easiest way to add Maestro compatibility to a Unity scene is by utilizing th
 
 By default, any object that is collidable within the scene will provides haptics when touched. The default haptics can be configured via `MaestroManager`. `MaestroManager` can be found on the root of the provided prefabs.
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/maestro_manager.PNG" height="250"/>&nbsp;
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/maestro_manager.PNG" height="250"/>&nbsp;
 
 Under `Default Interaction Profile`, you can configure the default haptics and configuration for the scene:
  - `Grab Type` - Currently only `Arcade` is available; more to come soon!
@@ -70,7 +72,7 @@ Under `Default Interaction Profile`, you can configure the default haptics and c
 
 To customize the haptics for a given collidable gameobject, utilize the `MaestroInteractable` script. The fields available will look very similar to those found on `MaestroManager` ([documented here](#default-haptics)).
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.6.0/images/interactable_haptics.png" height="250"/>
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/interactable_haptics.png" height="250"/>
 
 You can also control how an object can be manipulated using the `Type` field under Configuration:
   - `Static` - Unable to be picked up
