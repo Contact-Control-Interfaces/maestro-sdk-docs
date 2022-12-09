@@ -29,9 +29,9 @@ It is also possible to roll your own configuration using the SDK components avai
 
 Before installing the Unity SDK package, you'll need to:
  - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
- - Intall the Oculus Integration package from the Asset Store
+ - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
-You can grab a tarball of our latest Unity SDK Package here [TODO]. You can add this package using the Package Manager:
+You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager:
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/>
 
@@ -91,6 +91,10 @@ This script also defines a few events that may be used to easily create complex 
 &nbsp;
 
 ## Troubleshooting
+
+#### My gloves don't connect when running on Meta Quest 2!
+
+Make sure your Maestros are paired to your Quest 2 via the Settings -> Devices -> Bluetooth menu.
 
 #### Running my scene causes Unity to terminate!
 
