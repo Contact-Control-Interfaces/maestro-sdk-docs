@@ -31,11 +31,11 @@ Before installing the Unity SDK package, you'll need to:
  - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
  - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
-You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager:
-
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/>
-
-&nbsp;
+There are two ways to install the Contact CI Unity SDK Package:
+ - You can grab our package via the Package Manager by adding the following scoped registry: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/scoped_registry.png" height="250"/>
+ &nbsp; Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/contactci_package.png" height="250"/>
+  
+ - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/> &nbsp;
 
 ## Included Sample
 
@@ -117,5 +117,9 @@ You need to add the scoped registry for Ultraleap hand tracking support, [see Se
 #### error CS0246: The type or namespace name 'OVRManager' could not be found (are you missing a using directive or an assembly reference?)
 
 You need to import [the Oculus Integration](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) for full Quest hand tracking support.
+
+#### When running the sandbox sample scene, the background environment is just black
+
+On the MaestroOculusRig prefab instance, on the `OVRManager` component, ensure that "Passthrough Capability Enabled" is checked under Quest Features -> General tab.
 
 <strong>Please contact us at support@contact.ci with any questions.</strong>
