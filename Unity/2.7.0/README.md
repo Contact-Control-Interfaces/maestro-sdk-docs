@@ -28,7 +28,7 @@ It is also possible to roll your own configuration using the SDK components avai
 ## Setup
 
 Before installing the Unity SDK package, you'll need to:
- - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed here: https://developer.leapmotion.com/unity#setup-openupm.
+ - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed [here](https://developer.leapmotion.com/unity#setup-openupm).
  - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
 There are two ways to install the Contact CI Unity SDK Package:
