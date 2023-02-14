@@ -32,9 +32,11 @@ Before installing the Unity SDK package, you'll need to:
  - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
 There are two ways to install the Contact CI Unity SDK Package:
- - You can grab our package via the Package Manager by adding the following scoped registry: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/scoped_registry.PNG" height="250"/>
- &nbsp; Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/contactci_package.PNG" height="250"/>
-  
+ - You can grab our package via the Package Manager by adding the following scoped registry:
+    - URL: `https://registry.npmjs.org`
+   - Scope: `com.contactci.unity`
+   - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/scoped_registry.PNG" height="250"/>
+   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/contactci_package.PNG" height="250"/>
  - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/> &nbsp;
 
 ## Included Sample
