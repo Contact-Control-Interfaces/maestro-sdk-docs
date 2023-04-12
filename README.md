@@ -8,11 +8,12 @@
 [C API](https://contact-control-interfaces.github.io/maestro-sdk-docs/C/html/index.html)
 
 ## Hardware Setup
+
+[Setup for Ultraleap](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_leap_motion)
+
 [Setup for Valve Index Controllers](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_valve_index)
 
-[Setup for Leap Motion](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_leap_motion)
-
-## Maestro Alpha Setup (⚠Older Versions⚠)
+### Maestro Alpha Setup (⚠Older Versions⚠)
 For the haptics to work properly, the Maestro software must be installed.
 
 Alpha configuration installer [can be found here.](https://github.com/Contact-Control-Interfaces/maestro-installer)
