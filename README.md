@@ -12,11 +12,11 @@
 
 [Setup for Leap Motion](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_leap_motion)
 
-[Setup for Maestro Alpha](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_alpha)
-
 ## Maestro Alpha Setup (Older Versions)
 For the haptics to work properly, the Maestro software must be installed.
 
-Configuration installer [can be found here.](https://github.com/Contact-Control-Interfaces/maestro-installer)
+Alpha Configuration installer [can be found here.](https://github.com/Contact-Control-Interfaces/maestro-installer)
+
+[Setup for Maestro Alpha](https://contact-control-interfaces.github.io/maestro-sdk-docs/Setup/setup_alpha)
   
 ## Please contact us at <support@contact.ci> with any questions.
