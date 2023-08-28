@@ -1,7 +1,5 @@
 # Maestro Unity SDK 2.7.0 Guide
 
-## See [this guide](../README.md) for previous versions
-
 Unity SDK 2.7.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0).
 
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
