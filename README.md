@@ -59,7 +59,7 @@ The easiest way to add Maestro compatibility to a Unity scene is by utilizing th
 
 By default, any object that is collidable within the scene will provides haptics when touched. The default haptics can be configured via `MaestroManager`. `MaestroManager` can be found on the root of the provided prefabs.
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/maestro_manager.PNG" height="250"/>&nbsp;
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/maestro_manager.png" height="250"/>&nbsp;
 
 Under `Default Interaction Profile`, you can configure the default haptics and configuration for the scene:
  - `Grab Type` - Currently only `Arcade` is available; more to come soon!
