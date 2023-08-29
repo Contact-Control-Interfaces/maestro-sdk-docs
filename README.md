@@ -1,7 +1,5 @@
 # Maestro Unity SDK 2.7.0 Guide
 
-## See [this guide](../README.md) for previous versions
-
 Unity SDK 2.7.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0).
 
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
@@ -35,21 +33,21 @@ There are two ways to install the Contact CI Unity SDK Package:
  - You can grab our package via the Package Manager by adding the following scoped registry:
     - URL: `https://registry.npmjs.org`
    - Scope: `com.contactci.unity`
-   - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/scoped_registry.PNG" height="250"/>
-   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/contactci_package.PNG" height="250"/>
- - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_tarball.png" height="250"/> &nbsp;
+   - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/scoped_registry.png" height="250"/>
+   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.png" height="250"/>
+ - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_tarball.png" height="250"/> &nbsp;
 
 ## Included Sample
 
 Once you've installed the package, you can navigate to the "Samples" section within the Package Manager listing to import the Sandbox sample scene:
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/package_manager_samples.png" height="250"/>
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_samples.png" height="250"/>
 
 The sandbox scene has a variety of interactions including picking up objects, pushing buttons, and finger painting.
 
 In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 1/2 hand tracking support.
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/hierarchy_rigs.png" height="250"/>
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hierarchy_rigs.png" height="250"/>
 
 &nbsp;
 
@@ -61,7 +59,7 @@ The easiest way to add Maestro compatibility to a Unity scene is by utilizing th
 
 By default, any object that is collidable within the scene will provides haptics when touched. The default haptics can be configured via `MaestroManager`. `MaestroManager` can be found on the root of the provided prefabs.
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/maestro_manager.PNG" height="250"/>&nbsp;
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/maestro_manager.PNG" height="250"/>&nbsp;
 
 Under `Default Interaction Profile`, you can configure the default haptics and configuration for the scene:
  - `Grab Type` - Currently only `Arcade` is available; more to come soon!
@@ -74,7 +72,7 @@ Under `Default Interaction Profile`, you can configure the default haptics and c
 
 To customize the haptics for a given collidable gameobject, utilize the `MaestroInteractable` script. The fields available will look very similar to those found on `MaestroManager` ([documented here](#default-haptics)).
 
- <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/Unity/2.7.0/images/interactable_haptics.png" height="250"/>
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/interactable_haptics.png" height="250"/>
 
 You can also control how an object can be manipulated using the `Type` field under Configuration:
   - `Static` - Unable to be picked up
