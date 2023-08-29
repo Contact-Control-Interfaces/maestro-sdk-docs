@@ -33,8 +33,8 @@ There are two ways to install the Contact CI Unity SDK Package:
  - You can grab our package via the Package Manager by adding the following scoped registry:
     - URL: `https://registry.npmjs.org`
    - Scope: `com.contactci.unity`
-   - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/scoped_registry.PNG" height="250"/>
-   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.PNG" height="250"/>
+   - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/scoped_registry.png" height="250"/>
+   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.png" height="250"/>
  - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_tarball.png" height="250"/> &nbsp;
 
 ## Included Sample
