@@ -1,4 +1,10 @@
-# Maestro Unity SDK 2.7.0 Guide
+# Maestro Unity SDK Guide
+
+## Requirements
+
+In order for your Contact CI Maestro to be able to connect to your computer you will need to install our software found [here](https://drive.google.com/drive/folders/1BAK5SGDzYHzWHDJW80tJP0-ZD7vEkADX?usp=sharing)
+
+## SDK
 
 Unity SDK 2.7.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0).
 
