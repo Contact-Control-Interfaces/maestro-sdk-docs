@@ -2,7 +2,7 @@
 
 ## Requirements
 
-In order for your Contact CI Maestro to be able to connect to your computer you will need to install our software found [here](https://drive.google.com/drive/folders/1BAK5SGDzYHzWHDJW80tJP0-ZD7vEkADX?usp=sharing)
+In order for your Contact CI Maestro to be able to connect to your computer you will need to [install our software found here](https://drive.google.com/drive/folders/1BAK5SGDzYHzWHDJW80tJP0-ZD7vEkADX?usp=sharing).
 
 ## SDK
 
@@ -26,13 +26,15 @@ The Unity SDK provides the following prefab rigs for ease of integration:
    - Ultraleap 3Di
  - [MaestroOculusRig]
    - Meta Quest 1/2
+ - [MaestroVarjoRig]
+   - Ultraleap hand tracking systems integrated into Varjo headsets.
 
 It is also possible to roll your own configuration using the SDK components available.
 
 ## Setup
 
 Before installing the Unity SDK package, you'll need to:
- - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed [here](https://developer.leapmotion.com/unity#setup-openupm).
+ - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by [following the steps listed here](https://developer.leapmotion.com/unity#setup-openupm).
  - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
 There are two ways to install the Contact CI Unity SDK Package:
@@ -41,7 +43,7 @@ There are two ways to install the Contact CI Unity SDK Package:
    - Scope: `com.contactci.unity`
    - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/scoped_registry.png" height="250"/>
    - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.png" height="250"/>
- - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_tarball.png" height="250"/> &nbsp;
+ - You can grab [a tarball of our latest Unity SDK Package here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_tarball.png" height="250"/> &nbsp;
 
 ## Included Sample
 
@@ -61,6 +63,8 @@ In order to run the scene, first ensure that you have enabled the rig that corre
 
 The easiest way to add Maestro compatibility to a Unity scene is by utilizing the provided prefabs: [MaestroUltraleapRig] and [MaestroOculusRig]. These can be found under `Contact CI Unity SDK/Runtime/Core/Prefabs/` in the `Packages` folder after installing from a tarball. Simply drag the appropriate prefab into the hierarchy.
 
+There is also a [MaestroVarjoRig] provided to be used specifically for Varjo headsets with integrated Ultraleap hand tracking.
+
 ### Default Haptics
 
 By default, any object that is collidable within the scene will provides haptics when touched. The default haptics can be configured via `MaestroManager`. `MaestroManager` can be found on the root of the provided prefabs.
@@ -68,11 +72,17 @@ By default, any object that is collidable within the scene will provides haptics
  <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/maestro_manager.png" height="250"/>&nbsp;
 
 Under `Default Interaction Profile`, you can configure the default haptics and configuration for the scene:
- - `Grab Type` - Currently only `Arcade` is available; more to come soon!
+ - `Grab Type` - Right now `Arcade` is the only option. More to come soon!
+   - `Arcade` - Simplified pickup based on finger curl, once fingers are curled enough everything within a certain radius is grabbed.
  - `Interactables Only` - Disables these default haptic settings. Only objects that have a `MaestroInteractable` will have haptics when touched.
  - `Amplitude` - Controls the strength of force feedback. The value ranges from `0` to `255`, with `0` being no pull and `255` being full force feedback.
  - `Vibration Effect` - The vibration effect to be applied.
- - `Vibration Options` - Options corresponding to the selected vibration effect. Typically the strength of the effect.
+ - `Modifiers` - Modifiers to apply to the vibration effect.
+   - `One Shot` - Only play the effect once rather than continuously.
+   - `Repeat  Delay` - If playing continuously, the delay in milliseconds before the effect repeats.
+ - `Vibration Options` - Options corresponding to the selected vibration effect. Typically the strength of the effect. More complicated effects may have additional options available.
+
+Note that if `Interactables Only` is set to true, the default effect will not be available as all effects are then controlled by the `MaestroInteractable`s on each individual object. 
 
 ### MaestroInteractable
 
@@ -87,12 +97,15 @@ You can also control how an object can be manipulated using the `Type` field und
 
 This script also defines a few events that may be used to easily create complex interactions:
 - Events
-  - `On Grab` - Called when after the object is grabbed
-  - `On Release` - Called when after the object is released
+  - `On Grab` - Called when after the object is grabbed. Not called if grab type is set to `None`.
+  - `On Release` - Called when after the object is released. Not called if grab type is set to `None`.
 - Finger events
   - `On Touch` (FingerCollider) - Called when a finger touches the object
   - `Un Touch` (FingerCollider) - Called when a finger stops touching the object
   - `While Touch` (FingerCollider) - Called while a finger touches the object
+  - `On Trigger Touch` (FingerCollider) - Called when a finger touches a trigger
+  - `Un Trigger Touch` (FingerCollider) - Called when a finger stops touching a trigger
+  - `While Trigger Touch` (FingerCollider) - Called while a finger touches a trigger
 
 &nbsp;
 
