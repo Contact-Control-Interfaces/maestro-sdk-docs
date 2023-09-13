@@ -6,16 +6,14 @@ In order for your Contact CI Maestro to be able to connect to your computer you 
 
 ## SDK
 
-Unity SDK 2.7.0 [can be downloaded here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0).
-
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
 
-This release includes:
- - Prefabs for Ultraleap and Meta Quest 1/2 hand-tracking compatibility
+This includes:
+ - Prefabs for Ultraleap and Meta Quest hand-tracking compatibility
  - The ability to customize force feedback and vibrotactile haptics per object in scene
  - An example scene showcasing interactions and haptics named "Sandbox"
 
-This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta Quest 1/2 hand tracking.
+This Unity SDK is designed to be tracking-agnostic, though we provide prefab rigs for Ultraleap and Meta Quest hand tracking.
 
 ## Compatibility
 
@@ -25,23 +23,22 @@ The Unity SDK provides the following prefab rigs for ease of integration:
    - Stereo IR 170
    - Ultraleap 3Di
  - [MaestroOculusRig]
-   - Meta Quest 1/2
+   - Meta Quest 1/2/Pro
 
 It is also possible to roll your own configuration using the SDK components available.
 
 ## Setup
 
 Before installing the Unity SDK package, you'll need to:
- - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. You can do this by following the steps listed [here](https://developer.leapmotion.com/unity#setup-openupm).
+ - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. [You can do this by following the steps listed here](https://openupm.com/packages/com.ultraleap.tracking/).
  - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
-There are two ways to install the Contact CI Unity SDK Package:
- - You can grab our package via the Package Manager by adding the following scoped registry:
-    - URL: `https://registry.npmjs.org`
+You can grab our package via the Package Manager by adding a scoped registry. Navigate to Edit -> Project Settings -> Package Manager and enter the following:
+   - Name: `Contact CI`
+   - URL: `https://registry.npmjs.org`
    - Scope: `com.contactci.unity`
    - e.g. <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/scoped_registry.png" height="250"/>
-   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.png" height="250"/>
- - You can grab a tarball of our latest Unity SDK Package [here](https://github.com/Contact-Control-Interfaces/maestro-sdk-unity/releases/tag/v2.7.0). You can add this package using the Package Manager: <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_tarball.png" height="250"/> &nbsp;
+   - Then you should be able to install the package listed under "My Registries": <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/contactci_package.png" height="100"/>
 
 ## Included Sample
 
