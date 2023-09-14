@@ -104,6 +104,28 @@ This script also defines a few events that may be used to easily create complex 
   - `Un Trigger Touch` (FingerCollider) - Called when a finger stops touching a trigger
   - `While Trigger Touch` (FingerCollider) - Called while a finger touches a trigger
 
+### FingerCollider
+
+Script controlling the colliders used for detecting hand collisions. Automatically spawned by `MaestroHand`.
+Mainly used for finger events, `index` can be used to figure out which part of the hand was collided with.
+
+`MaestroIndex` wraps two enums describing the location on the hand:
+ - `WhichFinger` - which finger/part of the hand the collider corresponds to.
+   - `Thumb`
+   - `Index`
+   - `Middle`
+   - `Ring`
+   - `Palm`
+ - `PointOnFinger` - What bone/joint the collider corresponds to. Digits refer to bones, while the others refer to joints/tip.
+   - `Tip`
+   - `Middle`
+   - `Base`
+   - `ProximalDigit`
+   - `Distal`
+   - `DistalDigit` 
+
+`FingerCollider`s are spawned according to the Hand Definition on `MaestroManager`/`MaestroHand`. By default, `MaestroManager` controls the sizing for both hands but selecting `Override Settings` on `MaestroHand` allows the hands to be defined separately.
+
 &nbsp;
 
 ## Troubleshooting
