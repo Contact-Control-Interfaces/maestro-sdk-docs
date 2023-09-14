@@ -94,8 +94,8 @@ You can also control how an object can be manipulated using the `Type` field und
 
 This script also defines a few events that may be used to easily create complex interactions:
 - Events
-  - `On Grab` - Called when after the object is grabbed. Not called if grab type is set to `None`.
-  - `On Release` - Called when after the object is released. Not called if grab type is set to `None`.
+  - `On Grab` - Called when after the object is grabbed.
+  - `On Release` - Called when after the object is released.
 - Finger events
   - `On Touch` (FingerCollider) - Called when a finger touches the object
   - `Un Touch` (FingerCollider) - Called when a finger stops touching the object
