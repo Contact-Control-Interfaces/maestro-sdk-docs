@@ -128,6 +128,14 @@ Mainly used for finger events, `index` can be used to figure out which part of t
 
 &nbsp;
 
+## Custom Rig Setup
+
+In the event the provided rigs are insufficient, such as when adding support for a custom hand tracking solution, the user will need to provide several key points on the hand skeleton for filling out the hand and spawning colliders. The following picture describes the rough location of these keypoints and the terminology used to refer to them:
+
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hand_keypoints.png" height="450"/>
+
+The transforms provided tell `MaestroHand` where to spawn `FingerCollider`s. The transforms provided for key points on the palm are used to generate an approximation of the palm made up of several prisms. The radius of spawned `FingerCollider`s corresponding to the Hand Sizing section of `MaestroManager`'s Hand Definition section (or `MaestroHand`'s if `Override Settings` is toggled).
+
 ## Troubleshooting
 
 #### My gloves don't connect when running on Meta Quest 2!
