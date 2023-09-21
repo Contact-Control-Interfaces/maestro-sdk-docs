@@ -87,6 +87,8 @@ To customize the haptics for a given collidable gameobject, utilize the `Maestro
 
  <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/interactable_haptics.png" height="250"/>
 
+`MaestroInteractable` has three separate haptic effects (Touch Begin, Touch Sustain, and Touch End) to be played when the user initially touches the object, continues to touch it, and stops touching it respectively. Since haptics are based on contact, by default the Touch End effect will not be felt. By setting the `MaestroInteractable` to `IsPersistent`, a duration can be configured for which effects will continue to be felt after stopping contact, allowing the Touch End effect to be used.
+
 You can also control how an object can be manipulated using the `Type` field under Configuration:
   - `Static` - Unable to be picked up
   - `One hand grab` - Can be picked up using either individual hand
@@ -94,8 +96,8 @@ You can also control how an object can be manipulated using the `Type` field und
 
 This script also defines a few events that may be used to easily create complex interactions:
 - Events
-  - `On Grab` - Called when after the object is grabbed.
-  - `On Release` - Called when after the object is released.
+  - `On Grab` - Called after the object is grabbed.
+  - `On Release` - Called after the object is released.
 - Finger events
   - `On Touch` (FingerCollider) - Called when a finger touches the object
   - `Un Touch` (FingerCollider) - Called when a finger stops touching the object
@@ -127,6 +129,14 @@ Mainly used for finger events, `index` can be used to figure out which part of t
 `FingerCollider`s are spawned according to the Hand Definition on `MaestroManager`/`MaestroHand`. By default, `MaestroManager` controls the sizing for both hands but selecting `Override Settings` on `MaestroHand` allows the hands to be defined separately.
 
 &nbsp;
+
+## Custom Rig Setup
+
+In the event the provided rigs are insufficient, such as when adding support for a custom hand tracking solution, the user will need to provide several key points on the hand skeleton for filling out the hand and spawning colliders. The following picture describes the rough location of these keypoints and the terminology used to refer to them:
+
+ <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hand_keypoints.png" height="450"/>
+
+The transforms provided tell `MaestroHand` where to spawn `FingerCollider`s. The transforms provided for key points on the palm are used to generate an approximation of the palm made up of several prisms. The radius of spawned `FingerCollider`s corresponding to the Hand Sizing section of `MaestroManager`'s Hand Definition section (or `MaestroHand`'s if `Override Settings` is toggled).
 
 ## Troubleshooting
 
