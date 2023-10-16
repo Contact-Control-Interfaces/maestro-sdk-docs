@@ -2,7 +2,7 @@
 
 ## Requirements
 
-In order for your Contact CI Maestro to be able to connect to your computer you will need to [install our software found here](https://drive.google.com/drive/folders/1BAK5SGDzYHzWHDJW80tJP0-ZD7vEkADX?usp=sharing).
+In order for your Contact CI Maestro to be able to connect to your computer you will need to [install our software found here](https://gitlab.contact.ci/windows/installer/-/releases).
 
 ## SDK
 
