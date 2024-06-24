@@ -4,6 +4,8 @@
 
 In order for your Contact CI Maestro to be able to connect to your computer you will need to [install our software found here](https://gitlab.contact.ci/windows/installer/-/releases).
 
+This will install the Contact CI Manager and backing Contact CI Service required for your haptic devices. The Manager manages all your Contact CI haptic devices, and allows more direct control over them and the service itself.
+
 ## SDK
 
 The Unity SDK provides compatibilty and smooth integration of Maestro with new and existing XR scenes.
@@ -29,11 +31,13 @@ The Unity SDK provides the following prefab rigs for ease of integration:
 
 It is also possible to roll your own configuration using the SDK components available.
 
+The SDK by default uses Standard materials, but includes URP materials and prefab variants for convenience. For instance if you wanted to use the `[MaestroUltraleapRig]` prefab with URP, there's a variant already made called `[MaestroUltraleapRig_URP]`.
+
 ## Setup
 
 Before installing the Unity SDK package, you'll need to:
  - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. [You can do this by following the steps listed here](https://openupm.com/packages/com.ultraleap.tracking/).
- - Intall the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
+ - Install the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
 
 You can grab our package via the Package Manager by adding a scoped registry. Navigate to Edit -> Project Settings -> Package Manager and enter the following:
    - Name: `Contact CI`
@@ -73,11 +77,13 @@ Under `Default Interaction Profile`, you can configure the default haptics and c
    - `Arcade` - Simplified pickup based on finger curl, once fingers are curled enough everything within a certain radius is grabbed.
  - `Interactables Only` - Disables these default haptic settings. Only objects that have a `MaestroInteractable` will have haptics when touched.
  - `Amplitude` - Controls the strength of force feedback. The value ranges from `0` to `255`, with `0` being no pull and `255` being full force feedback.
- - `Vibration Effect` - The vibration effect to be applied.
+ - `Vibration Effect` - The vibration effect to be applied. Can be one of two kinds:
+   - `Vibration Effect` - Use a predefined effect. Displays `Vibration Options` if necessary.
+   - `Vibration Amplitude` - Directly control the vibration strength with an `0` to `1.0` amplitude.
  - `Modifiers` - Modifiers to apply to the vibration effect.
    - `One Shot` - Only play the effect once rather than continuously.
    - `Repeat  Delay` - If playing continuously, the delay in milliseconds before the effect repeats.
- - `Vibration Options` - Options corresponding to the selected vibration effect. Typically the strength of the effect. More complicated effects may have additional options available.
+ - `Vibration Options` - Options corresponding to the selected vibration effect. Typically the strength of the effect. More complicated effects may have additional options available. Unused if using vibration amplitude.
 
 Note that if `Interactables Only` is set to true, the default effect will not be available as all effects are then controlled by the `MaestroInteractable`s on each individual object. 
 
@@ -139,6 +145,17 @@ In the event the provided rigs are insufficient, such as when adding support for
 The transforms provided tell `MaestroHand` where to spawn `FingerCollider`s. The transforms provided for key points on the palm are used to generate an approximation of the palm made up of several prisms. The radius of spawned `FingerCollider`s corresponding to the Hand Sizing section of `MaestroManager`'s Hand Definition section (or `MaestroHand`'s if `Override Settings` is toggled).
 
 ## Troubleshooting
+
+#### I see a warning on my screen or in the headset saying "Service Disconnected!"
+
+The Contact CI Service needs to be installed and running.
+
+If you need to install it, [see Requirements above.](#requirements)
+If it is installed but not running, either:
+  - Run the Contact CI Manager and use the dropdown on the left to `Start Service`
+  - Or, start the Contact CI Service directly with Run > `services.msc` > Contact CI Service
+
+Alternatively, the warnings can be disabled entirely if the `ToggleOverlays` input is bound.
 
 #### My gloves don't connect when running on Meta Quest 2!
 
