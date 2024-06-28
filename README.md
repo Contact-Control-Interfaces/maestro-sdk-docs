@@ -52,9 +52,15 @@ Once you've installed the package, you can navigate to the "Samples" section wit
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/package_manager_samples.png" height="250"/>
 
-The sandbox scene has a variety of interactions including picking up objects, pushing buttons, and finger painting.
+The sample scene has a variety of interactions including picking up objects and pushing buttons.
 
 In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 1/2 hand tracking support.
+
+You must also make sure Ultraleap's Physical Hands layers have been created. The quickest way is to use the menu bar and go to Ultraleap -> Physical Hands -> Physical Hands Manager.  
+
+This will create a GameObject that you should delete, the main purpose is to have it create the two physics layers that ultraleap needs.
+
+In ProjectSettings -> Physics, make sure to disable Collision between the PhysicalHands layers and the MaestroHand layer
 
 <img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hierarchy_rigs.png" height="250"/>
 
@@ -156,6 +162,11 @@ If it is installed but not running, either:
   - Or, start the Contact CI Service directly with Run > `services.msc` > Contact CI Service
 
 Alternatively, the warnings can be disabled entirely if the `ToggleOverlays` input is bound.
+### I can't grab objects in the sample scene and my collisions seem unstable
+
+The collision matrix needs to be setup so that MaestroHands do not collide with PhysicalHands and PhysicalHandsReset layers from Ultraleap.  
+
+Make sure the collisions between these layers are disabled before pressing Play. An error will be thrown if the collision matrix is not setup correctly, reminding you to fix the collision layers.
 
 #### My gloves don't connect when running on Meta Quest 2!
 
