@@ -56,13 +56,14 @@ The sample scene has a variety of interactions including picking up objects and 
 
 In order to run the scene, first ensure that you have enabled the rig that corresponds to your target platform and XR setup. There are currently two rigs: one for Ultraleap hand tracking support and another for Meta Quest 1/2 hand tracking support.
 
+<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hierarchy_rigs.png" height="250"/>
+
 You must also make sure Ultraleap's Physical Hands layers have been created. The quickest way is to use the menu bar and go to Ultraleap -> Physical Hands -> Physical Hands Manager.  
 
 This will create a GameObject that you should delete, the main purpose is to have it create the two physics layers that ultraleap needs.
 
 In ProjectSettings -> Physics, make sure to disable Collision between the PhysicalHands layers and the MaestroHand layer
 
-<img src="https://contact-control-interfaces.github.io/maestro-sdk-docs/images/hierarchy_rigs.png" height="250"/>
 
 &nbsp;
 
