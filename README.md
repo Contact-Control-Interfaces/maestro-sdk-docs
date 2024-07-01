@@ -37,7 +37,12 @@ The SDK by default uses Standard materials, but includes URP materials and prefa
 
 Before installing the Unity SDK package, you'll need to:
  - Add a scoped registry entry for Ultraleap's Unity SDK so that the Package Manager can resolve the dependency. [You can do this by following the steps listed here](https://openupm.com/packages/com.ultraleap.tracking/).
- - Install the [Oculus Integration package](https://assetstore.unity.com/packages/tools/integration/oculus-integration-82022) from the Asset Store
+ - Add a scoped registry entry for Meta's core SDK package so that the Package manager can resolve the dependency:
+   - Navigate to Edit -> Project Settings -> Package Manager and enter the following:
+     - Name: `Meta`
+     - URL: `https://npm.developer.oculus.com`
+     - Scope: `com.meta.xr.sdk.core`
+     - [Alternatively, you can follow Meta's instructions here](https://developer.oculus.com/documentation/unity/unity-package-manager/)
 
 You can grab our package via the Package Manager by adding a scoped registry. Navigate to Edit -> Project Settings -> Package Manager and enter the following:
    - Name: `Contact CI`
