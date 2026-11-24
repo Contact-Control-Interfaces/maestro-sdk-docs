@@ -16,6 +16,7 @@ The node only carries haptic commands to the glove. Read [What the node does not
 - [What a real glove needs](#what-a-real-glove-needs)
 - [Trying the node without a glove](#trying-the-node-without-a-glove)
 - [Running the glove node](#running-the-glove-node)
+- [A minimal publisher](#a-minimal-publisher)
 - [Topics and services](#topics-and-services)
 - [Messages](#messages)
 - [Parameters](#parameters)
@@ -143,6 +144,77 @@ ros2 service call /maestro/right/glove/release std_srvs/srv/Trigger
 Deactivating the node, shutting it down or stopping it with Ctrl-C does the same before the glove is closed.
 
 Parameters are read at `configure`. To change one, take the node through `cleanup` first, then `configure` again.
+
+## A minimal publisher
+
+This script publishes a `HapticCommand` for the right glove 10 times a second, turning on one vibration effect on the index finger. It uses only the Python standard library, `rclpy` and `contactci_msgs`, and runs unchanged on Jazzy and Humble.
+
+```python
+"""Turn on one vibration effect on the index finger of the right glove."""
+import time
+
+import rclpy
+from rclpy.executors import ExternalShutdownException
+from rclpy.node import Node
+
+from contactci_msgs.msg import FingerHaptic, HapticCommand
+
+# Must be an effect code that your glove supports (1 to 255).
+VIBRATION_EFFECT_CODE = 1
+
+TOPIC = '/maestro/right/glove/command'
+
+
+class MinimalPublisher(Node):
+
+    def __init__(self):
+        super().__init__('minimal_haptic_publisher')
+        # A new source_id on every start: the node name plus the start time.
+        self.source_id = f'{self.get_name()}-{time.time_ns()}'
+        self.sequence = 0
+        self.publisher = self.create_publisher(HapticCommand, TOPIC, 10)
+        self.timer = self.create_timer(0.1, self.publish_command)
+
+    def publish_command(self):
+        self.sequence += 1
+
+        finger = FingerHaptic()
+        finger.finger = FingerHaptic.INDEX
+        finger.vibration_mode = FingerHaptic.VIBRATION_EFFECT
+        finger.vibration_effect = VIBRATION_EFFECT_CODE
+
+        command = HapticCommand()
+        command.schema_version = HapticCommand.SCHEMA_VERSION
+        command.header.stamp = self.get_clock().now().to_msg()
+        command.source_id = self.source_id
+        command.sequence = self.sequence
+        command.side = HapticCommand.SIDE_RIGHT
+        command.fingers = [finger]
+        self.publisher.publish(command)
+
+
+def main():
+    rclpy.init()
+    node = MinimalPublisher()
+    try:
+        rclpy.spin(node)
+    except (KeyboardInterrupt, ExternalShutdownException):
+        pass
+    finally:
+        node.destroy_node()
+        if rclpy.ok():
+            rclpy.shutdown()
+
+
+if __name__ == '__main__':
+    main()
+```
+
+Save it as `minimal_publisher.py` and run it with `python3 minimal_publisher.py` in a terminal where the workspace is sourced, while the node is active. Every field the script does not set is left at zero, so `hold` is 0 and each command is held for `max_hold_ms`.
+
+While it runs, each accepted command is echoed on `applied` with `reason` `REASON_COMMAND` (0), the script's `source_id`, the index finger set to `VIBRATION_EFFECT` with your effect code, and the other four fingers off. Stop it with Ctrl-C: about `max_hold_ms` later the node releases the glove and echoes one message with `reason` `REASON_EXPIRED` (1), every finger off and `sequence` 0.
+
+This example has been run against the node with the fake driver only, on both Jazzy and Humble, not against a glove. A real publisher should also set the Lifespan QoS of its command publisher, as described under [Clocks](#clocks).
 
 ## Topics and services
 
@@ -330,7 +402,7 @@ Its values: lifecycle state, connected, side, serial number, product line, servi
 The node logs one line when it starts, for example:
 
 ```text
-contactci_ros version 0.1.0-rc.1, commit 20aa3869cefa6453551313a56e55a80bc2743b66, dirty false, build 45434250130; ROS jazzy, Python 3.12.3
+contactci_ros version 0.1.0-rc.1, commit 0123456789abcdef0123456789abcdef01234567, dirty false, build 1234567890; ROS jazzy, Python 3.12.3
 ```
 
 and gives the same on `/diagnostics`, so a bag that includes `/diagnostics` keeps it:
@@ -340,7 +412,7 @@ and gives the same on `/diagnostics`, so a bag that includes `/diagnostics` keep
 | `node version` | The full version of the build, for example `0.1.0-rc.1` |
 | `node commit` | The git commit the build was made from, all 40 characters |
 | `node build dirty` | `true` when tracked files had uncommitted changes, so the commit alone does not give the code back. Use such a build on the bench only, never to record data |
-| `node build id` | The CI (automated build) run that made a release archive; `local` for a build from a clone of the source repository |
+| `node build id` | The CI (automated build) run that made a release archive; `local` for a build that CI did not make |
 | `toolchain` | The ROS distro and the Python version the node runs on |
 
 A release archive carries this record in `BUILD_INFO.txt`. A build that has no record still works; the node then reports `unknown` for what it cannot know.
