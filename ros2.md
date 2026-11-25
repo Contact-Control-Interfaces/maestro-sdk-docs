@@ -147,10 +147,10 @@ Parameters are read at `configure`. To change one, take the node through `cleanu
 
 ## A minimal publisher
 
-This script publishes a `HapticCommand` for the right glove 10 times a second, turning on one vibration effect on the index finger. It uses only the Python standard library, `rclpy` and `contactci_msgs`, and runs unchanged on Jazzy and Humble.
+This script publishes a `HapticCommand` for the right glove 10 times a second, asking for one short vibration pulse on the index finger. It uses only the Python standard library, `rclpy` and `contactci_msgs`, and runs unchanged on Jazzy and Humble.
 
 ```python
-"""Turn on one vibration effect on the index finger of the right glove."""
+"""Ask for one short vibration pulse on the index finger of the right glove."""
 import time
 
 import rclpy
@@ -159,8 +159,10 @@ from rclpy.node import Node
 
 from contactci_msgs.msg import FingerHaptic, HapticCommand
 
-# Must be an effect code that your glove supports (1 to 255).
-VIBRATION_EFFECT_CODE = 1
+# One of the effect codes the node accepts by default: 4, 5, 6, 9, 20, 24, 25, 26.
+VIBRATION_EFFECT_CODE = 24
+# Bit 7 of the modifier: play the effect once. Without it the effect repeats.
+PLAY_ONCE = 128
 
 TOPIC = '/maestro/right/glove/command'
 
@@ -182,6 +184,7 @@ class MinimalPublisher(Node):
         finger.finger = FingerHaptic.INDEX
         finger.vibration_mode = FingerHaptic.VIBRATION_EFFECT
         finger.vibration_effect = VIBRATION_EFFECT_CODE
+        finger.vibration_modifier = PLAY_ONCE
 
         command = HapticCommand()
         command.schema_version = HapticCommand.SCHEMA_VERSION
@@ -210,7 +213,7 @@ if __name__ == '__main__':
     main()
 ```
 
-Save it as `minimal_publisher.py` and run it with `python3 minimal_publisher.py` in a terminal where the workspace is sourced, while the node is active. Every field the script does not set is left at zero, so `hold` is 0 and each command is held for `max_hold_ms`.
+Save it as `minimal_publisher.py` and run it with `python3 minimal_publisher.py` in a terminal where the workspace is sourced, while the node is active. Every field the script does not set is left at zero, so `hold` is 0 and each command is held for `max_hold_ms`. The effect is sent with the play-once bit, so the glove plays a short pulse, not a continuous vibration; while the same command repeats, the glove may play the pulse once only.
 
 While it runs, each accepted command is echoed on `applied` with `reason` `REASON_COMMAND` (0), the script's `source_id`, the index finger set to `VIBRATION_EFFECT` with your effect code, and the other four fingers off. Stop it with Ctrl-C: about `max_hold_ms` later the node releases the glove and echoes one message with `reason` `REASON_EXPIRED` (1), every finger off and `sequence` 0.
 
@@ -245,8 +248,8 @@ The desired output for one finger. A command, not a measurement.
 | `force_mode` | `uint8` | `FORCE_OFF`=0; `FORCE_AMPLITUDE`=1, normalized tendon resistance, open loop; `FORCE_POSITION`=2, reserved and rejected |
 | `force_value` | `float32` | [0, 1] for `FORCE_AMPLITUDE`; must be 0 for `FORCE_OFF` |
 | `vibration_mode` | `uint8` | `VIBRATION_OFF`=0; `VIBRATION_EFFECT`=1, one of the driver's built-in effects; `VIBRATION_AMPLITUDE`=2, reserved and rejected |
-| `vibration_effect` | `uint8` | Driver effect code, 1 to 255; 0 is not an effect |
-| `vibration_modifier` | `uint8` | Driver effect modifier byte |
+| `vibration_effect` | `uint8` | Driver effect code, 1 to 123; 0 is not an effect |
+| `vibration_modifier` | `uint8` | Driver effect modifier byte. Bit 7 (128): play once; without it the effect repeats until stopped |
 | `vibration_amplitude` | `float32` | [0, 1]; ignored unless `VIBRATION_AMPLITUDE`, which is reserved |
 
 Every field of a force or vibration that is off must be zero.
@@ -305,7 +308,8 @@ Set these in the parameter file. The node reads them at `configure`; they cannot
 | `watchdog_period_ms` | int | `10` | Milliseconds. Period of the check for an expired command and for a lost glove |
 | `force_enabled` | bool | `false` | Force commands are rejected unless this is true. See [Force output](#force-output) |
 | `max_force_amplitude` | double | `0.0` | Largest force value accepted, in [0, 1]. A command that asks for more is rejected, not reduced to this |
-| `allowed_vibration_effects` | int[] | unset | Vibration effect codes that are accepted; any other is rejected. Unset allows any effect code 1 to 255 |
+| `allowed_vibration_effects` | int[] | `[4, 5, 6, 9, 20, 24, 25, 26]` | The only vibration effect codes accepted, each 1 to 123; any other is rejected. The default is eight short single pulses. Setting it replaces the default; a code outside 1 to 123 stops the node from configuring |
+| `allow_repeating_vibration` | bool | `false` | A vibration effect repeats until stopped unless bit 7 (128, play once) of `vibration_modifier` is set. A command without that bit is rejected unless this is true |
 | `driver` | string | `contactci` | `contactci`: the glove, through the `contactci` Python binding and the Linux service. `fake`: no glove; commands are accepted and echoed, nothing moves |
 
 ## Safety behaviour
@@ -337,7 +341,8 @@ A command is rejected when:
 - it uses a reserved mode, `FORCE_POSITION` or `VIBRATION_AMPLITUDE`;
 - `force_value` or `vibration_amplitude` is NaN, infinite or outside [0, 1], or any field of a force or vibration that is off is not zero;
 - it asks for force while `force_enabled` is false, or for more than `max_force_amplitude`. A force above the limit is rejected, not reduced to it;
-- it asks for vibration effect 0, or for an effect that is not in `allowed_vibration_effects` when that list is set;
+- it asks for vibration effect 0, for an effect code above 123, or for one that is not in `allowed_vibration_effects`;
+- it asks for a vibration effect without the play-once bit (128) in `vibration_modifier` while `allow_repeating_vibration` is false;
 - its `sequence` is not higher than the highest the node has seen from that `source_id` since `configure`;
 - `hold` is negative;
 - it is stale or future-dated.
